@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+
+</head>
+<body>
+    <div ng-controller="addScheduleCtrl">
+        <div>
+            Room:   <div>
+                <select class="form-control" ng-model="room">
+                    <option ng-selected="room.id == item.id" ng-repeat="item in roomList" ng-value="item.id">{{item.name}}</option>
+                </select>
+            </div>
+
+            From : <input ng-model="from" type="datetime-local" id="datepickerFrom"
+                          name="meeting-time" value="2018-06-12T19:30"><br /><br />
+
+            To :<input ng-model="to" type="datetime-local" id="datepickerTo"
+                       name="meeting-time" value="2018-06-12T19:30"> <br /><br />
+        </div>
+         {{msg}}
+         {{statusval}}
+         {{statustext}}
+
+        <button id="btnAddSchedule" ng-click="addSchedule(1, room, from , to)">Add schedule</button>
+
+    </div>
+
+
+</body>
+</html>

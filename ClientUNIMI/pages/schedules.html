@@ -1,0 +1,153 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
+
+</head>
+<body>
+
+
+
+
+    <a href="#/addSched">Add Scheduling</a>
+    <a href="#/yourScheduling">Your Scheduling</a>
+
+
+
+    <div ng-controller="schedulingCtrl">
+
+        <p>Output Message : {{msg}}</p>
+        <p>StatusCode: {{statusval}}</p>
+        <p>Status: {{statustext}}</p>
+        <p>Response Headers: {{headers}}</p>
+        <div>Your Scehdulings:</div>
+        <div ng-repeat="aula in Scheduling">
+            <p>Aula : {{aula.room.name}} Da : {{aula.dateFrom}} A: {{aula.dateTo}}</p>
+        </div>
+
+    </div>
+
+    <a href="#addSchedule"><i class="fa fa-home"></i> Add schedule</a>
+    <!--<div ng-controller="addScheduleCtrl">
+        <input type="hidden" id="hidToken" />
+        <div>
+            Room:   <div>
+                <select class="form-control" ng-model="room">
+                    <option ng-selected="room.id == item.id" ng-repeat="item in roomList" ng-value="item.id">{item.name}}</option>
+                </select>
+            </div>
+
+            From : <input ng-model="from" /><br /><br />
+            To : <input ng-model="to" /><br /><br />
+            <input type="button" value="Send" ng-click="schedule(name, age, adress)" /> <br /><br />
+        </div>
+        <p>Output Message : {msg}}</p>
+        <p>StatusCode: {statusval}}</p>
+        <p>Status: {statustext}}</p>
+        <p>Response Headers: {headers}}</p>
+
+        <div>Your Scehdulings:</div>
+        <div ng-repeat="aula in Scheduling">
+            <p>Aula : {aula.room.name}} Da : {aula.dateFrom}} A: {aula.dateTo}}</p>
+        </div>
+
+    </div> -->
+
+
+    <script type="text/javascript">
+        /*   var app = angular.module('scotchApp');
+
+           var url = "http://localhost:1337/api/v1/";
+
+
+           app.controller('schedulingCtrl', function ($rootScope, $scope, $http) {
+
+               alert('sno qui');
+               $scope.name = null;
+               $scope.age = null;
+               $scope.adress = null;
+               $scope.lblMsg = null;
+               $scope.Scheduling = {};
+
+
+               alert($rootScope.token);
+
+               alert($scope.token);
+
+               var data = {
+                   email: "viola.viventi@gmail.com",
+                   password: "test",
+                   application: "mia app"
+               };
+
+               $http({
+                   method: 'POST',
+                   url: url + 'authentication/login',
+                   data: {
+                       email: "viola.viventi@gmail.com",
+                       password: "test",
+                       application: "mia app",
+                       headers: { 'Content-Type': 'application/json' }
+                   }
+               }).success(function (response) {
+                   alert('sno qui2');
+
+                   $scope.token = response.token;
+                   alert('qui');
+                   $http({
+                       method: 'GET',
+                       url: url + 'meeting?application=mia app',
+                       headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + $scope.token }
+
+                   }).success(function (response) {
+                       alert('qui2');
+                       $scope.Scheduling = response;
+                   });
+               });
+
+           });
+           */
+
+        /*app.controller('addScheduleCtrl', function ($rootScope, $scope, $http) {
+            $scope.name = null;
+            $scope.age = null;
+            $scope.adress = null;
+            $scope.lblMsg = null;
+            $scope.Scheduling = {};
+
+            var data = {
+                email: "viola.viventi@gmail.com",
+                password: "test",
+                application: "mia app"
+            };
+
+            $http({
+                method: 'POST',
+                url: url + 'authentication/login',
+                data: {
+                    email: "viola.viventi@gmail.com",
+                    password: "test",
+                    application: "mia app",
+                    headers: { 'Content-Type': 'application/json' }
+                }
+            }).success(function (response) {
+                $scope.token = response.token;
+                $http({
+                    method: 'GET',
+                    url: url + 'rooms/?application=mia app',
+                    headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + $scope.token }
+
+                }).success(function (response) {
+                    $scope.roomList = response;
+                });
+            });
+
+        }); */
+
+    </script>
+
+
+</body>
+</html>
