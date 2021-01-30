@@ -2,6 +2,8 @@
 // create the module and name it scotchApp
 var scotchApp = angular.module('scotchApp', ['ngRoute']);
 var url = "http://localhost:1337/api/v1/";
+var token = "";
+var userId = "";
 
 
 // configure our routes
@@ -37,7 +39,7 @@ scotchApp.config(function ($routeProvider) {
 });
 
 // create the controller and inject Angular's $scope
-scotchApp.controller('mainController', function ($scope, $http) {
+scotchApp.controller('mainController', function ($scope,  $http) {
 	// create a message to display in our view
 
     $http({
@@ -51,6 +53,7 @@ scotchApp.controller('mainController', function ($scope, $http) {
         }
     }).success(function (response) {
         $scope.token = response.token;
+        token = response.token;
         writeLog("12", "message test", $scope.token);
         $scope.message = 'Everyone come and see how good I look!';
     })
@@ -71,6 +74,7 @@ scotchApp.controller('addScheduleCtrl', function ($scope) {
 
 scotchApp.controller('loginCtrl', function ($scope, $http) {
 
+  
     $http({
         method: 'POST',
         url: url + 'authentication/login',
@@ -97,7 +101,7 @@ scotchApp.controller('loginCtrl', function ($scope, $http) {
 });
 
 
-scotchApp.controller('schedulingCtrl', function ($scope, $http) {
+scotchApp.controller('schedulingCtrl', function ($scope,  $http) {
 
     $http({
         method: 'POST',
@@ -122,10 +126,23 @@ scotchApp.controller('schedulingCtrl', function ($scope, $http) {
         });
     });
 
+    $scope.deleteScheduling = function (toDelete)
+    {
+        alert('da :' + toDelete.id + ' data A :' + toDelete.dateTo);
+        $http({
+            method: 'DELETE',
+            url: url + 'meeting?application=mia app',
+            data : { id: toDelete.id},
+            headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + $scope.token }
+
+        }).success(function (response) {
+            $scope.Scheduling = response;
+        })
+    }
 });
 
 
-scotchApp.controller('addScheduleCtrl', function ($rootScope, $scope, $http) {
+scotchApp.controller('addScheduleCtrl', function ( $scope, $http) {
     $scope.name = null;
     $scope.age = null;
     $scope.adress = null;
@@ -155,8 +172,11 @@ scotchApp.controller('addScheduleCtrl', function ($rootScope, $scope, $http) {
 
     $scope.addSchedule = function (userId, idRoom, dataDa, dataA)
     {
-      
-        $http({
+
+        check = confirm("Do you confirm schedulation?")
+        if (check) {
+        
+        /*$http({
             method: 'POST',
             url: url + 'authentication/login',
             data: {
@@ -165,26 +185,31 @@ scotchApp.controller('addScheduleCtrl', function ($rootScope, $scope, $http) {
                 application: "mia app",
                 headers: { 'Content-Type': 'application/json' }
             }
-        }).success(function (response, dateFrom, dateTo) {
-            $scope.token = response.token;
+        }).success(function (response, dateFrom, dateTo) { */
+           // $scope.token = response.token;
             $http({
-                method: 'GET',
+                method: 'POST',
                 url: url + 'meeting/?application=mia app',
                 data: {
-                    userId: userId,
-                    idRoom: idRoom,
+                    user: userId,
                     dateFrom: dataDa,
-                    dateTo: dataA
+                    dateTo: dataA,
+                    room: idRoom               
                 },
-                headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + $scope.token }
+                headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token }
             }).success(function (response) {
 
             });
-        });
+        //});
+        } else {
 
+        }
     }
 
 });
+
+
+
 
 function writeLog(userId, message, token) {
 

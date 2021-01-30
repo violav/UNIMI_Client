@@ -1,0 +1,31 @@
+﻿body {
+  
+}
+
+footer {
+    background-color: black;
+    color: white;
+    font-family: 'Segoe UI', Verdana;
+}
+
+
+.navbar {
+    background-color: black;
+    color: white;
+    font-family:'Segoe UI', Verdana;
+    font:100;
+}
+
+a:hover {
+    font:bold;    
+    color:white !important;
+}
+
+div {
+    margin-left:3%;
+    margin-right:3%;
+}
+
+button {
+    width:100%;
+}

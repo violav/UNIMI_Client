@@ -6,27 +6,49 @@
 
 </head>
 <body>
-    <div ng-controller="addScheduleCtrl">
-        <div>
-            Room:   <div>
-                <select class="form-control" ng-model="room">
+    <style>
+        #btnAddSchedule {
+                margin-top:20px;    
+            }    
+    </style>
+
+
+    <div class="row" id="errorSchedule">
+        <div class="alert alert-primary">
+            {{msg}}
+            {{statusval}}
+            {{statustext}}
+        </div>
+    </div>
+
+    <div ng-controller="addScheduleCtrl" class="row">
+        <div class="row">
+            <div class="col-12 ">
+                Room: <select class="form-control" ng-model="room">
                     <option ng-selected="room.id == item.id" ng-repeat="item in roomList" ng-value="item.id">{{item.name}}</option>
                 </select>
             </div>
-
-            From : <input ng-model="from" type="datetime-local" id="datepickerFrom"
-                          name="meeting-time" value="2018-06-12T19:30"><br /><br />
-
-            To :<input ng-model="to" type="datetime-local" id="datepickerTo"
-                       name="meeting-time" value="2018-06-12T19:30"> <br /><br />
         </div>
-         {{msg}}
-         {{statusval}}
-         {{statustext}}
 
-        <button id="btnAddSchedule" ng-click="addSchedule(1, room, from , to)">Add schedule</button>
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-6">
+                From :  <input ng-model="from" class="form-control" type="datetime-local" id="datepickerFrom"
+                               name="meeting-time">
+            </div>
 
+            <div class="col-xs-12 col-sm-6 col-md-6">
+                To :<input ng-model="to" class="form-control" type="datetime-local" id="datepickerTo"
+                           name="meeting-time">
+            </div>
+        </div>
+
+       
+    <div class="row">
+        <div class="col-md-6">
+            <button id="btnAddSchedule" class="btn btn-primary" ng-click="addSchedule('6013ec934c776e6804ffed5d', room, from , to)">Add schedule</button>
+        </div>
     </div>
+   </div>
 
 
 </body>

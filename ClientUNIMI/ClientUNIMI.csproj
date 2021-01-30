@@ -75,6 +75,7 @@
     <Content Include="pages\home.html" />
     <Content Include="pages\schedules.html" />
     <Content Include="script.js" />
+    <Content Include="Style\Style.css" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
