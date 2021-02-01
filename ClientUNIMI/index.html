@@ -4,14 +4,26 @@
 <html ng-app="scotchApp">
 
 <head>
+    <title>Unimi Room Scheduling</title>
+    <meta name="description" content="room booking at Univeristy of Milan." />
     <!-- SCROLLS -->
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" />
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css" />
 
-    <!-- SPELLS -->
-    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <!--<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.7.0/moment.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script>
+
 
     <script src="script.js"></script>
     <link href="Style/Style.css" rel="stylesheet" />
@@ -19,31 +31,45 @@
 
 <!-- define angular controller -->
 <body ng-controller="mainController">
+      
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top">
+        <a class="navbar-brand" href="#">Unimi room booking</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav mr-auto">
 
-    <nav class="navbar navbar-default">
-        <div class="container">
-           
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="#"><i class="fa fa-home"></i>Home </a></li>
-                <li><a href="#about"><i class="fa fa-shield"></i> About</a></li>
-                <li><a href="#contact"><i class="fa fa-comment"></i> Contact</a></li>
-                <li><a href="#schedules"><i class="fa fa-comment"></i> Schedules</a></li>
-                <li><a href="#addSchedules"><i class="fa fa-comment"></i> Add Schedules</a></li>
+                <li class="nav-item"><a class="nav-link" href="#"><i class="fa fa-home"></i>Home </a></li>
+                <li class="nav-item"><a class="nav-link" href="#login"><i class="fa fa-sign-in"></i> Login/Sign Up</a></li>
+                <li class="nav-item"><a class="nav-link" href="#contact"><i class="fa fa-comment"></i> Contact</a></li>
+                <li class="nav-item"><a class="nav-link" href="#schedules"><i class="fa fa-search"></i> Your schedules</a></li>
+                <li class="nav-item"><a class="nav-link" href="#addSchedules"><i class="fa fa-calendar"></i> Add Schedules</a></li>
+                <li class="nav-item"><a class="nav-link" href="#roomUser"><i class="fa fa-calendar"></i> Admin</a></li>
 
+            </ul>
+
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item" ng-click="logout()"><i class="fa fa-sign-out"><span id="lougoutBtn">Logout</span></i></li>
             </ul>
         </div>
     </nav>
+
+
+
 
     <div id="main">
 
         <!-- angular templating -->
         <!-- this is where content will be injected -->
-        <div ng-view></div>
+        <div ng-view>
 
+
+        </div>
     </div>
 
     <footer class="text-center">
-        
     </footer>
 
 </body>

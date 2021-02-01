@@ -1,0 +1,46 @@
+﻿<div class="jumbotron text-center">
+    <h3>{{pageTitle}}</h3>
+
+    <dvi class="alertMsg">{{message}}</dvi>
+
+    <form class="text-center p-5">
+
+        <div class="card text-center">
+
+            <div class="card-block" style="margin-top:5%">
+                <p class="card-text" ng-show="isSignUp">
+                    <label><b>Name</b></label>
+                    <input type="text" id="defaultRegisterFormEmail" class="form-control mb-4" placeholder="Your name" ng-model="name">
+                </p>
+
+                <p class="card-text">
+                    <label><b>email</b></label>
+                    <input type="email" id="defaultRegisterFormEmail" class="form-control mb-4" placeholder="E-mail" ng-model="email">
+                </p>
+
+                <!--<p class="card-text">
+            <label><b>Password</b></label>
+            <input type="password" ng-style="passwordStrength" ng-change="analyze(password)" id="defaultRegisterFormPassword" class="form-control" placeholder="Password" aria-describedby="defaultRegisterFormPasswordHelpBlock" ng-model="password">
+            <div ng-style="passwordStrength"></div>
+        </p>
+         -->
+
+                <p class="card-text">
+                    <label><b>Password</b></label>
+                    <input type="password" ng-style="checkpwdStrength" ng-change="validationInputPwdText(password)" id="defaultRegisterFormPassword" class="form-control" placeholder="Password" aria-describedby="defaultRegisterFormPasswordHelpBlock" ng-model="password">
+                  
+            </div>
+            </p>
+
+
+
+            <input ng-show="!isSignUp" class="my-4 btn btn-primary" type="submit" style="width:100%" ng-click="login()" value="Confirm" />
+            <input ng-show="isSignUp" class="my-4 btn btn-primary" type="submit" style="width:100%" ng-click="singUp()" value="Confirm" />
+
+        </div>
+
+        </div>
+
+    </form>
+    <!-- </div> -->
+</div>

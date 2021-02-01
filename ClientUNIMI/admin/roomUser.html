@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+
+</head>
+<body>
+    <style>
+        #btnAddSchedule {
+            margin-top: 20px;
+        }
+    </style>
+
+
+    <div class="row" id="errorSchedule">
+        <div class="alert alert-primary">
+            {{msg}}
+            {{statusval}}
+            {{statustext}}
+        </div>
+    </div>
+
+
+    <div ng-controller="roomUserController" class="container">
+
+        <div class="text-center border border-light p-5">
+
+            <p class="h4 p-4">Allow rooms to student</p>
+            <label>Student:</label>
+            <select class="form-control" ng-model="user">
+                <option ng-selected="user._id == s._id" ng-repeat="s in studentList" ng-value="s._id"> {{s.name}}</option>
+            </select>
+            <label>Room:</label>
+            <select class="form-control" ng-model="room">
+                <option ng-selected="room.id == item.id" ng-repeat="item in roomList" ng-value="item.id">{{item.name}}</option>
+            </select>
+
+            <!-- Sign up button -->
+            <button id="btnAddSchedule" class="btn btn-primary" ng-click="addRoomStudent(room, user)">Add schedule</button>
+
+        </div>
+
+    </div>
+</body>
+</html>

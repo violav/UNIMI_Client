@@ -8,48 +8,51 @@
 <body>
     <style>
         #btnAddSchedule {
-                margin-top:20px;    
-            }    
+            margin-top: 20px;
+        }
     </style>
 
 
-    <div class="row" id="errorSchedule">
+    <div class="row" >
         <div class="alert alert-primary">
-            {{msg}}
+            {{meesage}}
             {{statusval}}
             {{statustext}}
         </div>
     </div>
 
-    <div ng-controller="addScheduleCtrl" class="row">
-        <div class="row">
-            <div class="col-12 ">
-                Room: <select class="form-control" ng-model="room">
-                    <option ng-selected="room.id == item.id" ng-repeat="item in roomList" ng-value="item.id">{{item.name}}</option>
-                </select>
-            </div>
-        </div>
+  
+    <div ng-controller="addScheduleCtrl" class="container">
 
-        <div class="row">
-            <div class="col-xs-12 col-sm-6 col-md-6">
-                From :  <input ng-model="from" class="form-control" type="datetime-local" id="datepickerFrom"
+
+        <div class="text-center border border-light p-5">
+
+            <p class="h4 p-4">Add schedule</p>
+
+            <select class="form-control" ng-model="room">
+                <option ng-selected="room.id == item.id" ng-repeat="item in roomList" ng-value="item.id">{{item.name}}</option>
+            </select>
+
+            <div class="form-row mb-4">
+                <div class="col">
+                    <!-- Last name -->
+                    <label>from :</label> <input ng-model="from" class="form-control" type="datetime-local" id="datepickerFrom"
+                                  name="meeting-time">
+                </div>
+
+                <div class="col">
+                    <!-- Last name -->
+                    <label>To:</label> <input ng-model="to" class="form-control" type="datetime-local" id="datepickerTo"
                                name="meeting-time">
+                </div>
+
             </div>
 
-            <div class="col-xs-12 col-sm-6 col-md-6">
-                To :<input ng-model="to" class="form-control" type="datetime-local" id="datepickerTo"
-                           name="meeting-time">
-            </div>
+            <!-- Sign up button -->
+            <button id="btnAddSchedule" class="btn btn-primary" ng-click="addSchedule( room, from , to)">Add schedule</button>           
+
         </div>
 
-       
-    <div class="row">
-        <div class="col-md-6">
-            <button id="btnAddSchedule" class="btn btn-primary" ng-click="addSchedule('6013ec934c776e6804ffed5d', room, from , to)">Add schedule</button>
-        </div>
     </div>
-   </div>
-
-
 </body>
 </html>
